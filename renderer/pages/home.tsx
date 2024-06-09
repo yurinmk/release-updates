@@ -1,28 +1,28 @@
 import React from 'react'
-import Link from 'next/link'
 
-import { Header } from '../components/Header'
-import { Input } from '../components/Header/Input'
 import Image from 'next/image'
 
+import { Header } from '../components/Header'
+import { TextInput } from '../components/Inputs/TextInput'
+import { Button } from '../components/Inputs/Button'
+import { useRouter } from 'next/router'
+
 export default function HomePage() {
+  const router = useRouter()
+
   return (
     <React.Fragment>
       <div className="flex flex-col w-screen h-screen">
         <Header />
 
-        <form className="flex flex-col w-2/4 h-3/4 self-center justify-around">
+        <form className="flex flex-col w-2/4 h-3/4 self-center justify-around" onSubmit={() => router.push('/next')}>
           <Image className="ml-auto mr-auto" src="/images/logoLinx.png" alt="Logo image" width={40} height={40} />
 
-          <Input />
+          <TextInput label="Login" placeholder="Usuário" />
 
-          <Input />
+          <TextInput label="Senha" type="password" placeholder="****" />
 
-          <input
-            className="bg-primary text-white text-base font-bold py-2 px-4 border border-blue-700 rounded-md shadow-xl mt-1 cursor-pointer"
-            type="submit"
-            value="Entrar"
-          />
+          <Button text="Entrar" type="submit" typeStyle="primary" />
         </form>
       </div>
     </React.Fragment>

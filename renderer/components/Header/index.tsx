@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Minus, X } from 'lucide-react'
 
-export function Header() {
+export const Header = () => {
   return (
     <div className="flex flex-row w-full items-center justify-end px-5 py-3">
       <a href="#" className="mr-1 ]">
