@@ -1,0 +1,28 @@
+import React from 'react'
+import { Split } from '../Split'
+import { TextInput } from '../Inputs/TextInput'
+import { Board } from './Board'
+
+export const SendRelease = () => {
+  return (
+    <div className="flex flex-col w-full h-full items-center justify-start mt-4">
+      <Split />
+
+      <div className="flex flex-row w-full items-center justify-between ">
+        <div className="w-45p">
+          <TextInput className="h-8" label="Data" placeholder="DD/MM/AAAA" />
+        </div>
+
+        <div className="w-45p">
+          <TextInput className="h-8" label="Versão" placeholder="XX.XX.XX" />
+        </div>
+      </div>
+
+      <div className="flex flex-col w-full h-full">
+        <Board title="Novidades" placeholder="Digite a descrição da novidade." />
+
+        <Board title="Bugs" placeholder="Digite a descrição do bug." />
+      </div>
+    </div>
+  )
+}

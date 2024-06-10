@@ -2,6 +2,7 @@ import path from 'path'
 import { app, globalShortcut, ipcMain } from 'electron'
 import serve from 'electron-serve'
 import { createWindow } from './helpers'
+import { Constants } from '../renderer/constants'
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -15,8 +16,8 @@ if (isProd) {
   await app.whenReady()
 
   const mainWindow = createWindow('main', {
-    width: 550,
-    height: 380,
+    width: Constants.WINDOW_SIZE_LOGIN.width,
+    height: Constants.WINDOW_SIZE_LOGIN.height,
     transparent: true,
     resizable: false, // Impede o redimensionamento
     frame: false, // Remove a barra de título
@@ -29,24 +30,24 @@ if (isProd) {
   })
 
   if (isProd) {
-    await mainWindow.loadURL('app://./home')
+    await mainWindow.loadURL('app://./login')
   } else {
     const port = process.argv[2]
-    await mainWindow.loadURL(`http://localhost:${port}/home`)
+    await mainWindow.loadURL(`http://localhost:${port}/login`)
     mainWindow.restore()
 
     globalShortcut.register('CommandOrControl+Shift+I', () => {
       mainWindow.webContents.openDevTools()
     })
-  }
 
-  ipcMain.on('route-changed', (event, url) => {
-    if (url === '/home') {
-      mainWindow.setSize(400, 300)
-    } else {
-      mainWindow.setSize(800, 600)
-    }
-  })
+    ipcMain.on('route-changed', (event, url) => {
+      if (url === '/home') {
+        mainWindow.setSize(400, 300)
+      } else {
+        mainWindow.setSize(800, 600)
+      }
+    })
+  }
 })()
 
 app.on('window-all-closed', () => {

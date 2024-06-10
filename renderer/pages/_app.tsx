@@ -5,7 +5,7 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div id="app-container" className="bg-app shadow-2xl">
+    <div id="app-container" className="bg-app">
       <Component {...pageProps} />
     </div>
   )

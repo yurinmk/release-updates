@@ -16,9 +16,22 @@ module.exports = {
       app: '#F2F4F7',
       primary: '#411E5A',
       'purple-extra-light': '#F2E4FD',
-      red: '#FA0909'
+      red: '#FA0909',
+      gray: '#A3A3A3'
     },
-    extend: {},
+    fontFamily: {
+      'jockey': ['Jockey One', 'sans-serif'],
+    },
+    extend: {
+      width: {
+        '45p': '45%', 
+        '55p': '55%', 
+      },
+      height: {
+        '45p': '45%', 
+        '55p': '55%', 
+      },
+    },
   },
   plugins: [],
 }
