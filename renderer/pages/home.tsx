@@ -7,6 +7,7 @@ import { SendRelease } from '../components/SendRelease'
 
 export default function HomePage() {
   const [screenVisible, setScreenVisible] = useState<'list' | 'send'>('list')
+  const [dataToSend, setDataToSend] = useState()
 
   return (
     <React.Fragment>
@@ -32,7 +33,11 @@ export default function HomePage() {
             />
           </div>
 
-          {screenVisible === 'send' ? <SendRelease /> : <CardList />}
+          {screenVisible === 'send' ? (
+            <SendRelease onCancel={() => setScreenVisible('list')} onSend={setDataToSend} />
+          ) : (
+            <CardList />
+          )}
         </div>
       </div>
     </React.Fragment>

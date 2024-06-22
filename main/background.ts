@@ -16,8 +16,8 @@ if (isProd) {
   await app.whenReady()
 
   const mainWindow = createWindow('main', {
-    width: Constants.WINDOW_SIZE_LOGIN.width,
-    height: Constants.WINDOW_SIZE_LOGIN.height,
+    width: Constants.WINDOW_SIZE_DEFAULT.width,
+    height: Constants.WINDOW_SIZE_DEFAULT.height,
     transparent: true,
     resizable: false, // Impede o redimensionamento
     frame: false, // Remove a barra de título
@@ -30,10 +30,10 @@ if (isProd) {
   })
 
   if (isProd) {
-    await mainWindow.loadURL('app://./login')
+    await mainWindow.loadURL('app://./home')
   } else {
     const port = process.argv[2]
-    await mainWindow.loadURL(`http://localhost:${port}/login`)
+    await mainWindow.loadURL(`http://localhost:${port}/home`)
     mainWindow.restore()
 
     globalShortcut.register('CommandOrControl+Shift+I', () => {

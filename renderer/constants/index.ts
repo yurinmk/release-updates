@@ -1,7 +1,7 @@
 export const Constants = {
   WINDOW_SIZE_DEFAULT: {
-    width: 600,
-    height: 800,
+    width: 800,
+    height: 1000,
   },
   WINDOW_SIZE_LOGIN: {
     width: 500,
